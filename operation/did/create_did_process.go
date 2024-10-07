@@ -128,7 +128,7 @@ func (opp *CreateDIDProcessor) PreProcess(
 		return nil, mitumbase.NewBaseOperationProcessReasonError(
 			common.ErrMPreProcess.
 				Wrap(common.ErrMStateE).Errorf("did data for pub key %q in contract account %v",
-				fact.PubKeyReformed(), fact.Contract(),
+				fact.PubKeyDetatched(), fact.Contract(),
 			)), nil
 	}
 

@@ -110,9 +110,15 @@ func (fact CreateDIDFact) PubKey() string {
 	return fact.pubKey
 }
 
-func (fact CreateDIDFact) PubKeyReformed() string {
+func (fact CreateDIDFact) PubKeyDetatched() string {
 	// Detach 0x
 	pubKey := strings.TrimPrefix(fact.pubKey, "0x")
+
+	return pubKey
+}
+
+func (fact CreateDIDFact) PubKeyReformed() string {
+	pubKey := fact.PubKeyDetatched()
 	// reform pubkey
 	pubKey = "04" + pubKey[len(pubKey)-128:]
 	return pubKey
