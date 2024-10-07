@@ -12,7 +12,7 @@ type DesignJSONMarshaler struct {
 	DocContext     string `json:"docContext"`
 	DocAuthType    string `json:"docAuthType"`
 	DocSvcType     string `json:"docSvcType"`
-	DocSvcEncPoint string `json:"docSvcEncPoint"`
+	DocSvcEndPoint string `json:"docSvcEndPoint"`
 }
 
 func (de Design) MarshalJSON() ([]byte, error) {
@@ -22,7 +22,7 @@ func (de Design) MarshalJSON() ([]byte, error) {
 		DocContext:     de.docContext,
 		DocAuthType:    de.docAuthType,
 		DocSvcType:     de.docSvcType,
-		DocSvcEncPoint: de.docSvcEncPoint,
+		DocSvcEndPoint: de.docSvcEndPoint,
 	})
 }
 
@@ -32,7 +32,7 @@ type DesignJSONUnmarshaler struct {
 	DocContext     string    `json:"docContext"`
 	DocAuthType    string    `json:"docAuthType"`
 	DocSvcType     string    `json:"docSvcType"`
-	DocSvcEncPoint string    `json:"docSvcEncPoint"`
+	DocSvcEndPoint string    `json:"docSvcEndPoint"`
 }
 
 func (de *Design) DecodeJSON(b []byte, enc encoder.Encoder) error {
@@ -43,5 +43,5 @@ func (de *Design) DecodeJSON(b []byte, enc encoder.Encoder) error {
 		return e.Wrap(err)
 	}
 
-	return de.unmarshal(enc, u.Hint, u.DIDMethod, u.DocContext, u.DocAuthType, u.DocSvcType, u.DocSvcEncPoint)
+	return de.unmarshal(enc, u.Hint, u.DIDMethod, u.DocContext, u.DocAuthType, u.DocSvcType, u.DocSvcEndPoint)
 }

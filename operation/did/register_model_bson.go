@@ -21,7 +21,7 @@ func (fact RegisterModelFact) MarshalBSON() ([]byte, error) {
 			"docContext":     fact.docContext,
 			"docAuthType":    fact.docAuthType,
 			"docSvcType":     fact.docSvcType,
-			"docSvcEncPoint": fact.docSvcEncPoint,
+			"docSvcEndPoint": fact.docSvcEndPoint,
 			"currency":       fact.currency,
 		},
 	)
@@ -35,7 +35,7 @@ type RegisterModelFactBSONUnmarshaler struct {
 	DocContext     string `bson:"docContext"`
 	DocAuthType    string `bson:"docAuthType"`
 	DocSvcType     string `bson:"docSvcType"`
-	DocSvcEncPoint string `bson:"docSvcEncPoint"`
+	DocSvcEndPoint string `bson:"docSvcEndPoint"`
 	Currency       string `bson:"currency"`
 }
 
@@ -63,7 +63,7 @@ func (fact *RegisterModelFact) DecodeBSON(b []byte, enc *bsonenc.Encoder) error 
 
 	if err := fact.unpack(
 		enc, uf.Sender, uf.Contract, uf.DIDMethod, uf.DocContext,
-		uf.DocAuthType, uf.DocSvcType, uf.DocSvcEncPoint, uf.Currency,
+		uf.DocAuthType, uf.DocSvcType, uf.DocSvcEndPoint, uf.Currency,
 	); err != nil {
 		return common.DecorateError(err, common.ErrDecodeBson, *fact)
 	}

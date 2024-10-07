@@ -162,7 +162,7 @@ func (opp *CreateDIDProcessor) Process( // nolint:dupl
 	))
 
 	didDocument := types.NewDIDDocument(design.DocContext(), didData.DID(), fact.Hash().String(), "1",
-		design.DocAuthType(), fact.PubKeyReformed(), design.DocSvcType(), design.DocSvcEncPoint())
+		design.DocAuthType(), fact.PubKeyReformed(), design.DocSvcType(), design.DocSvcEndPoint())
 	document := types.NewDocument(didDocument)
 	if err := document.IsValid(nil); err != nil {
 		return nil, mitumbase.NewBaseOperationProcessReasonError("invalid did document; %w", err), nil

@@ -23,13 +23,13 @@ type RegisterModelFact struct {
 	docContext     string
 	docAuthType    string
 	docSvcType     string
-	docSvcEncPoint string
+	docSvcEndPoint string
 	currency       types.CurrencyID
 }
 
 func NewRegisterModelFact(
 	token []byte, sender, contract mitumbase.Address,
-	didMethod, docContext, docAuthType, docSvcType, docSvcEncPoint string, currency types.CurrencyID,
+	didMethod, docContext, docAuthType, docSvcType, docSvcEndPoint string, currency types.CurrencyID,
 ) RegisterModelFact {
 	bf := mitumbase.NewBaseFact(RegisterModelFactHint, token)
 	fact := RegisterModelFact{
@@ -40,7 +40,7 @@ func NewRegisterModelFact(
 		docContext:     docContext,
 		docAuthType:    docAuthType,
 		docSvcType:     docSvcType,
-		docSvcEncPoint: docSvcEncPoint,
+		docSvcEndPoint: docSvcEndPoint,
 		currency:       currency,
 	}
 	fact.SetHash(fact.GenerateHash())
@@ -89,7 +89,7 @@ func (fact RegisterModelFact) Bytes() []byte {
 		[]byte(fact.docContext),
 		[]byte(fact.docAuthType),
 		[]byte(fact.docSvcType),
-		[]byte(fact.docSvcEncPoint),
+		[]byte(fact.docSvcEndPoint),
 		fact.currency.Bytes(),
 	)
 }
@@ -126,8 +126,8 @@ func (fact RegisterModelFact) DocSvcType() string {
 	return fact.docSvcType
 }
 
-func (fact RegisterModelFact) DocSvcEncPoint() string {
-	return fact.docSvcEncPoint
+func (fact RegisterModelFact) DocSvcEndPoint() string {
+	return fact.docSvcEndPoint
 }
 
 func (fact RegisterModelFact) Currency() types.CurrencyID {

@@ -14,7 +14,7 @@ type Design struct {
 	docContext     string
 	docAuthType    string
 	docSvcType     string
-	docSvcEncPoint string
+	docSvcEndPoint string
 }
 
 func NewDesign(didMethod, docContext, docAuthType, docSvcType, docSvcEndpoint string) Design {
@@ -24,7 +24,7 @@ func NewDesign(didMethod, docContext, docAuthType, docSvcType, docSvcEndpoint st
 		docContext:     docContext,
 		docAuthType:    docAuthType,
 		docSvcType:     docSvcType,
-		docSvcEncPoint: docSvcEndpoint,
+		docSvcEndPoint: docSvcEndpoint,
 	}
 }
 
@@ -44,7 +44,7 @@ func (de Design) Bytes() []byte {
 		[]byte(de.docContext),
 		[]byte(de.docAuthType),
 		[]byte(de.docSvcType),
-		[]byte(de.docSvcEncPoint),
+		[]byte(de.docSvcEndPoint),
 	)
 }
 
@@ -72,8 +72,8 @@ func (de Design) DocSvcType() string {
 	return de.docSvcType
 }
 
-func (de Design) DocSvcEncPoint() string {
-	return de.docSvcEncPoint
+func (de Design) DocSvcEndPoint() string {
+	return de.docSvcEndPoint
 }
 
 func (de Design) Equal(cd Design) bool {
@@ -93,7 +93,7 @@ func (de Design) Equal(cd Design) bool {
 		return false
 	}
 
-	if de.docSvcEncPoint != cd.docSvcEncPoint {
+	if de.docSvcEndPoint != cd.docSvcEndPoint {
 		return false
 	}
 

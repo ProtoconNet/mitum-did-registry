@@ -16,7 +16,7 @@ type RegisterModelFactJSONMarshaler struct {
 	DocContext     string            `json:"docContext"`
 	DocAuthType    string            `json:"docAuthType"`
 	DocSvcType     string            `json:"docSvcType"`
-	DocSvcEncPoint string            `json:"docSvcEncPoint"`
+	DocSvcEndPoint string            `json:"docSvcEndPoint"`
 	Currency       types.CurrencyID  `json:"currency"`
 }
 
@@ -29,7 +29,7 @@ func (fact RegisterModelFact) MarshalJSON() ([]byte, error) {
 		DocContext:            fact.docContext,
 		DocAuthType:           fact.docAuthType,
 		DocSvcType:            fact.docSvcType,
-		DocSvcEncPoint:        fact.docSvcEncPoint,
+		DocSvcEndPoint:        fact.docSvcEndPoint,
 		Currency:              fact.currency,
 	})
 }
@@ -42,7 +42,7 @@ type RegisterModelFactJSONUnmarshaler struct {
 	DocContext     string `json:"docContext"`
 	DocAuthType    string `json:"docAuthType"`
 	DocSvcType     string `json:"docSvcType"`
-	DocSvcEncPoint string `json:"docSvcEncPoint"`
+	DocSvcEndPoint string `json:"docSvcEndPoint"`
 	Currency       string `json:"currency"`
 }
 
@@ -55,7 +55,7 @@ func (fact *RegisterModelFact) DecodeJSON(b []byte, enc encoder.Encoder) error {
 	fact.BaseFact.SetJSONUnmarshaler(u.BaseFactJSONUnmarshaler)
 
 	if err := fact.unpack(
-		enc, u.Sender, u.Contract, u.DIDMethod, u.DocContext, u.DocAuthType, u.DocSvcType, u.DocSvcEncPoint, u.Currency,
+		enc, u.Sender, u.Contract, u.DIDMethod, u.DocContext, u.DocAuthType, u.DocSvcType, u.DocSvcEndPoint, u.Currency,
 	); err != nil {
 		return common.DecorateError(err, common.ErrDecodeJson, *fact)
 	}

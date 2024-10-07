@@ -8,14 +8,14 @@ import (
 func (de *Design) unmarshal(
 	_ encoder.Encoder,
 	ht hint.Hint,
-	didMethod, docContext, docAuthType, docSvcType, docSvcEncPoint string,
+	didMethod, docContext, docAuthType, docSvcType, docSvcEndPoint string,
 ) error {
 	de.BaseHinter = hint.NewBaseHinter(ht)
 	de.didMethod = didMethod
 	de.docContext = docContext
 	de.docAuthType = docAuthType
 	de.docSvcType = docSvcType
-	de.docSvcEncPoint = docSvcEncPoint
+	de.docSvcEndPoint = docSvcEndPoint
 
 	return nil
 }

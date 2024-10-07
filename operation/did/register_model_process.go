@@ -144,7 +144,7 @@ func (opp *RegisterModelProcessor) Process(
 	var sts []mitumbase.StateMergeValue
 
 	design := types.NewDesign(
-		fact.DIDMethod(), fact.DocContext(), fact.DocAuthType(), fact.DocSvcType(), fact.DocSvcEncPoint(),
+		fact.DIDMethod(), fact.DocContext(), fact.DocAuthType(), fact.DocSvcType(), fact.DocSvcEndPoint(),
 	)
 	if err := design.IsValid(nil); err != nil {
 		return nil, mitumbase.NewBaseOperationProcessReasonError("invalid did design, %q; %w", fact.Contract(), err), nil

@@ -19,7 +19,7 @@ type RegisterModelCommand struct {
 	DocContext     string                      `arg:"" name:"doc-context" help:"doc context" required:"true"`
 	DocAuthType    string                      `arg:"" name:"doc-authType" help:"doc authentication type" required:"true"`
 	DocSvcType     string                      `arg:"" name:"doc-serviceType" help:"doc service type" required:"true"`
-	DocSvcEncPoint string                      `arg:"" name:"doc-serviceEndpoint" help:"doc service endpoint" required:"true"`
+	DocSvcEndPoint string                      `arg:"" name:"doc-serviceEndpoint" help:"doc service endpoint" required:"true"`
 	Currency       currencycmds.CurrencyIDFlag `arg:"" name:"currency" help:"currency id" required:"true"`
 	sender         base.Address
 	contract       base.Address
@@ -77,7 +77,7 @@ func (cmd *RegisterModelCommand) parseFlags() error {
 		return errors.Errorf("invalid Document service type, %s", cmd.DocSvcType)
 	}
 
-	if len(cmd.DocSvcEncPoint) < 1 {
+	if len(cmd.DocSvcEndPoint) < 1 {
 		return errors.Errorf("invalid Document service endpoint, %s", cmd.DocSvcType)
 	}
 
@@ -89,7 +89,7 @@ func (cmd *RegisterModelCommand) createOperation() (base.Operation, error) {
 
 	fact := did.NewRegisterModelFact(
 		[]byte(cmd.Token), cmd.sender, cmd.contract, cmd.DIDMethod,
-		cmd.DocContext, cmd.DocAuthType, cmd.DocSvcType, cmd.DocSvcEncPoint, cmd.Currency.CID,
+		cmd.DocContext, cmd.DocAuthType, cmd.DocSvcType, cmd.DocSvcEndPoint, cmd.Currency.CID,
 	)
 
 	op, err := did.NewRegisterModel(fact)

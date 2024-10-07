@@ -16,7 +16,7 @@ func (de Design) MarshalBSON() ([]byte, error) {
 			"docContext":     de.docContext,
 			"docAuthType":    de.docAuthType,
 			"docSvcType":     de.docSvcType,
-			"docSvcEncPoint": de.docSvcEncPoint,
+			"docSvcEndPoint": de.docSvcEndPoint,
 		})
 }
 
@@ -26,7 +26,7 @@ type DesignBSONUnmarshaler struct {
 	DocContext     string `bson:"docContext"`
 	DocAuthType    string `bson:"docAuthType"`
 	DocSvcType     string `bson:"docSvcType"`
-	DocSvcEncPoint string `bson:"docSvcEncPoint"`
+	DocSvcEndPoint string `bson:"docSvcEndPoint"`
 }
 
 func (de *Design) DecodeBSON(b []byte, enc *bsonenc.Encoder) error {
@@ -42,6 +42,6 @@ func (de *Design) DecodeBSON(b []byte, enc *bsonenc.Encoder) error {
 		return e.Wrap(err)
 	}
 
-	return de.unmarshal(enc, ht, u.DIDMethod, u.DocContext, u.DocAuthType, u.DocSvcType, u.DocSvcEncPoint)
+	return de.unmarshal(enc, ht, u.DIDMethod, u.DocContext, u.DocAuthType, u.DocSvcType, u.DocSvcEndPoint)
 
 }

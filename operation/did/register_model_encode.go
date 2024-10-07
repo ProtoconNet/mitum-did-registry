@@ -8,7 +8,7 @@ import (
 
 func (fact *RegisterModelFact) unpack(
 	enc encoder.Encoder,
-	sa, ta, didMethod, docContext, docAuthType, docSvcType, docSvcEncPoint, cid string,
+	sa, ta, didMethod, docContext, docAuthType, docSvcType, docSvcEndPoint, cid string,
 ) error {
 	fact.currency = types.CurrencyID(cid)
 
@@ -26,7 +26,7 @@ func (fact *RegisterModelFact) unpack(
 	fact.docContext = docContext
 	fact.docAuthType = docAuthType
 	fact.docSvcType = docSvcType
-	fact.docSvcEncPoint = docSvcEncPoint
+	fact.docSvcEndPoint = docSvcEndPoint
 
 	return nil
 }
