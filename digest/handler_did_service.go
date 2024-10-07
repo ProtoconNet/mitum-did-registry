@@ -6,6 +6,7 @@ import (
 	"github.com/ProtoconNet/mitum2/base"
 	"github.com/pkg/errors"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -88,11 +89,14 @@ func (hd *Handlers) handleDIDData(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	key, err, status := currencydigest.ParseRequest(w, r, "pubKey")
+	pkey, err, status := currencydigest.ParseRequest(w, r, "pubKey")
 	if err != nil {
 		currencydigest.HTTP2ProblemWithError(w, err, status)
 		return
 	}
+	pubKey := strings.TrimPrefix(pkey, "0x")
+	// reform pubkey
+	key := "04" + pubKey[len(pubKey)-128:]
 
 	if v, err, shared := hd.rg.Do(cacheKey, func() (interface{}, error) {
 		return hd.handleDIDDataInGroup(contract, key)

@@ -26,12 +26,13 @@ func NewData(
 ) Data {
 	data := Data{
 		BaseHinter: hint.NewBaseHinter(DataHint),
-		pubKey:     pkey,
 	}
 	// Detach 0x
 	pubKey := strings.TrimPrefix(pkey, "0x")
 	// reform pubkey
 	pubKey = "04" + pubKey[len(pubKey)-128:]
+	data.pubKey = pubKey
+
 	digest1 := sha3.Sum256([]byte(pubKey))
 	idString := hex.EncodeToString(digest1[:])[0:40]
 	digest2 := sha3.Sum256([]byte(Nid + idString))
