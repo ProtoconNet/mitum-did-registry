@@ -62,6 +62,11 @@ func POperationProcessorsMap(pctx context.Context) (context.Context, error) {
 		did.NewDeactivateDIDProcessor(),
 	); err != nil {
 		return pctx, err
+	} else if err := opr.SetProcessor(
+		did.MigrateDIDHint,
+		did.NewMigrateDIDProcessor(),
+	); err != nil {
+		return pctx, err
 	}
 
 	_ = set.Add(did.CreateDIDHint, func(height base.Height, getStatef base.GetStateFunc) (base.OperationProcessor, error) {
@@ -92,6 +97,15 @@ func POperationProcessorsMap(pctx context.Context) (context.Context, error) {
 	})
 
 	_ = set.Add(did.DeactivateDIDHint, func(height base.Height, getStatef base.GetStateFunc) (base.OperationProcessor, error) {
+		return opr.New(
+			height,
+			getStatef,
+			nil,
+			nil,
+		)
+	})
+
+	_ = set.Add(did.MigrateDIDHint, func(height base.Height, getStatef base.GetStateFunc) (base.OperationProcessor, error) {
 		return opr.New(
 			height,
 			getStatef,

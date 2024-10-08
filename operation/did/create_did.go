@@ -124,15 +124,6 @@ func (fact CreateDIDFact) PubKeyReformed() string {
 	return pubKey
 }
 
-//func (fact CreateDIDFact) DID(method string) string {
-//	digest1 := sha3.Sum256([]byte(fact.PubKeyReformed()))
-//	idString := hex.EncodeToString(digest1[:])[0:40]
-//	digest2 := sha3.Sum256([]byte(Nid + idString))
-//	checksum := hex.EncodeToString(digest2[:])[0:8]
-//	specificIdString := Nid + idString + checksum
-//	return fmt.Sprintf("did:%s:%s", method, specificIdString)
-//}
-
 func (fact CreateDIDFact) Currency() currencytypes.CurrencyID {
 	return fact.currency
 }
