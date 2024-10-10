@@ -10,11 +10,11 @@ import (
 func (it MigrateDIDItem) MarshalBSON() ([]byte, error) {
 	return bsonenc.Marshal(
 		bson.M{
-			"_hint":    it.Hint().String(),
-			"contract": it.contract,
-			"pubKey":   it.pubKey,
-			"txid":     it.txID,
-			"currency": it.currency,
+			"_hint":     it.Hint().String(),
+			"contract":  it.contract,
+			"publicKey": it.pubKey,
+			"txid":      it.txID,
+			"currency":  it.currency,
 		},
 	)
 }
@@ -22,7 +22,7 @@ func (it MigrateDIDItem) MarshalBSON() ([]byte, error) {
 type MigrateDIDItemBSONUnmarshaler struct {
 	Hint     string `bson:"_hint"`
 	Contract string `bson:"contract"`
-	PubKey   string `bson:"pubKey"`
+	PubKey   string `bson:"publicKey"`
 	TxID     string `bson:"txid"`
 	Currency string `bson:"currency"`
 }

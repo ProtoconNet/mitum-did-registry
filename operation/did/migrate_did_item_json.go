@@ -12,7 +12,7 @@ import (
 type MigrateDIDItemJSONMarshaler struct {
 	hint.BaseHinter
 	Contract base.Address             `json:"contract"`
-	PubKey   string                   `json:"pubKey"`
+	PubKey   string                   `json:"publicKey"`
 	TxID     string                   `json:"txid"`
 	Currency currencytypes.CurrencyID `json:"currency"`
 }
@@ -30,7 +30,7 @@ func (it MigrateDIDItem) MarshalJSON() ([]byte, error) {
 type MigrateDIDItemJSONUnMarshaler struct {
 	Hint     hint.Hint `json:"_hint"`
 	Contract string    `json:"contract"`
-	PubKey   string    `json:"pubKey"`
+	PubKey   string    `json:"publicKey"`
 	TxID     string    `json:"txid"`
 	Currency string    `json:"currency"`
 }
