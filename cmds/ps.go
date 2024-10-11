@@ -3,11 +3,11 @@ package cmds
 import (
 	"context"
 
-	"github.com/ProtoconNet/mitum-did/operation/did"
+	"github.com/ProtoconNet/mitum-did-registry/operation/did"
 
 	currencycmds "github.com/ProtoconNet/mitum-currency/v3/cmds"
 	currencyprocessor "github.com/ProtoconNet/mitum-currency/v3/operation/processor"
-	"github.com/ProtoconNet/mitum-did/operation/processor"
+	"github.com/ProtoconNet/mitum-did-registry/operation/processor"
 	"github.com/ProtoconNet/mitum2/base"
 	"github.com/ProtoconNet/mitum2/isaac"
 	"github.com/ProtoconNet/mitum2/launch"

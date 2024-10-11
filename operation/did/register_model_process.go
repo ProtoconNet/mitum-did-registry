@@ -8,8 +8,8 @@ import (
 	"github.com/ProtoconNet/mitum-currency/v3/state"
 	stateextension "github.com/ProtoconNet/mitum-currency/v3/state/extension"
 	currencytypes "github.com/ProtoconNet/mitum-currency/v3/types"
-	didstate "github.com/ProtoconNet/mitum-did/state"
-	"github.com/ProtoconNet/mitum-did/types"
+	didstate "github.com/ProtoconNet/mitum-did-registry/state"
+	"github.com/ProtoconNet/mitum-did-registry/types"
 
 	statecurrency "github.com/ProtoconNet/mitum-currency/v3/state/currency"
 	mitumbase "github.com/ProtoconNet/mitum2/base"

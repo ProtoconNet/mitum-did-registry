@@ -1,7 +1,7 @@
 package digest
 
 import (
-	"github.com/ProtoconNet/mitum-did/state"
+	"github.com/ProtoconNet/mitum-did-registry/state"
 	mitumbase "github.com/ProtoconNet/mitum2/base"
 	"go.mongodb.org/mongo-driver/mongo"
 )

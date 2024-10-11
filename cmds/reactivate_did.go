@@ -3,7 +3,7 @@ package cmds
 import (
 	"context"
 	currencycmds "github.com/ProtoconNet/mitum-currency/v3/cmds"
-	"github.com/ProtoconNet/mitum-did/operation/did"
+	"github.com/ProtoconNet/mitum-did-registry/operation/did"
 	"github.com/ProtoconNet/mitum2/base"
 	"github.com/ProtoconNet/mitum2/util"
 	"github.com/pkg/errors"

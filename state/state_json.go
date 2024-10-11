@@ -2,7 +2,7 @@ package state
 
 import (
 	"encoding/json"
-	"github.com/ProtoconNet/mitum-did/types"
+	"github.com/ProtoconNet/mitum-did-registry/types"
 
 	"github.com/ProtoconNet/mitum2/util"
 	"github.com/ProtoconNet/mitum2/util/encoder"

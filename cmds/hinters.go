@@ -2,9 +2,9 @@ package cmds
 
 import (
 	currencycmds "github.com/ProtoconNet/mitum-currency/v3/cmds"
-	"github.com/ProtoconNet/mitum-did/operation/did"
-	"github.com/ProtoconNet/mitum-did/state"
-	"github.com/ProtoconNet/mitum-did/types"
+	"github.com/ProtoconNet/mitum-did-registry/operation/did"
+	"github.com/ProtoconNet/mitum-did-registry/state"
+	"github.com/ProtoconNet/mitum-did-registry/types"
 	"github.com/ProtoconNet/mitum2/launch"
 	"github.com/ProtoconNet/mitum2/util/encoder"
 	"github.com/pkg/errors"

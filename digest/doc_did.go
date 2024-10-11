@@ -4,8 +4,8 @@ import (
 	mongodb "github.com/ProtoconNet/mitum-currency/v3/digest/mongodb"
 	bsonutil "github.com/ProtoconNet/mitum-currency/v3/digest/util/bson"
 	cstate "github.com/ProtoconNet/mitum-currency/v3/state"
-	"github.com/ProtoconNet/mitum-did/state"
-	"github.com/ProtoconNet/mitum-did/types"
+	"github.com/ProtoconNet/mitum-did-registry/state"
+	"github.com/ProtoconNet/mitum-did-registry/types"
 	"github.com/ProtoconNet/mitum2/base"
 	"github.com/ProtoconNet/mitum2/util/encoder"
 )

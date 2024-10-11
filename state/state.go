@@ -3,7 +3,7 @@ package state
 import (
 	"fmt"
 	"github.com/ProtoconNet/mitum-currency/v3/common"
-	"github.com/ProtoconNet/mitum-did/types"
+	"github.com/ProtoconNet/mitum-did-registry/types"
 	"strings"
 
 	mitumbase "github.com/ProtoconNet/mitum2/base"

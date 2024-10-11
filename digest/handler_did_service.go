@@ -2,7 +2,7 @@ package digest
 
 import (
 	currencydigest "github.com/ProtoconNet/mitum-currency/v3/digest"
-	"github.com/ProtoconNet/mitum-did/types"
+	"github.com/ProtoconNet/mitum-did-registry/types"
 	"github.com/ProtoconNet/mitum2/base"
 	"github.com/pkg/errors"
 	"net/http"

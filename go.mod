@@ -1,4 +1,4 @@
-module github.com/ProtoconNet/mitum-did
+module github.com/ProtoconNet/mitum-did-registry
 
 go 1.22
 

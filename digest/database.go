@@ -3,8 +3,8 @@ package digest
 import (
 	cdigest "github.com/ProtoconNet/mitum-currency/v3/digest"
 	utilc "github.com/ProtoconNet/mitum-currency/v3/digest/util"
-	"github.com/ProtoconNet/mitum-did/state"
-	"github.com/ProtoconNet/mitum-did/types"
+	"github.com/ProtoconNet/mitum-did-registry/state"
+	"github.com/ProtoconNet/mitum-did-registry/types"
 	"github.com/ProtoconNet/mitum2/base"
 	utilm "github.com/ProtoconNet/mitum2/util"
 	"github.com/pkg/errors"

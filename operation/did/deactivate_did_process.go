@@ -5,8 +5,8 @@ import (
 	"github.com/ProtoconNet/mitum-currency/v3/common"
 	"github.com/ProtoconNet/mitum-currency/v3/state"
 	crtypes "github.com/ProtoconNet/mitum-currency/v3/types"
-	didstate "github.com/ProtoconNet/mitum-did/state"
-	"github.com/ProtoconNet/mitum-did/types"
+	didstate "github.com/ProtoconNet/mitum-did-registry/state"
+	"github.com/ProtoconNet/mitum-did-registry/types"
 	"github.com/pkg/errors"
 	"sync"
 

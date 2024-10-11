@@ -10,7 +10,7 @@ import (
 
 	currencycmds "github.com/ProtoconNet/mitum-currency/v3/cmds"
 	currencydigest "github.com/ProtoconNet/mitum-currency/v3/digest"
-	"github.com/ProtoconNet/mitum-did/digest"
+	"github.com/ProtoconNet/mitum-did-registry/digest"
 	"github.com/ProtoconNet/mitum2/base"
 	"github.com/ProtoconNet/mitum2/isaac"
 	isaacstates "github.com/ProtoconNet/mitum2/isaac/states"

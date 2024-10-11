@@ -3,7 +3,7 @@ package cmds
 import (
 	"context"
 	currencydigest "github.com/ProtoconNet/mitum-currency/v3/digest"
-	"github.com/ProtoconNet/mitum-did/digest"
+	"github.com/ProtoconNet/mitum-did-registry/digest"
 	"github.com/ProtoconNet/mitum2/base"
 	"github.com/ProtoconNet/mitum2/isaac"
 	isaacblock "github.com/ProtoconNet/mitum2/isaac/block"
