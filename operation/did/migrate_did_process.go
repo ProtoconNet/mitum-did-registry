@@ -2,6 +2,7 @@ package did
 
 import (
 	"context"
+	"strings"
 	"sync"
 
 	extensioncurrency "github.com/ProtoconNet/mitum-currency/v3/state/extension"
@@ -109,7 +110,8 @@ func (ipp *MigrateDIDItemProcessor) Process(
 		state.NewDataStateValue(didData),
 	))
 
-	didDocument := types.NewDIDDocument(design.DocContext(), didData.DID(), it.TxID(), "1",
+	txHash := strings.TrimPrefix(it.TxID(), "0x")
+	didDocument := types.NewDIDDocument(design.DocContext(), didData.DID(), txHash, "1",
 		design.DocAuthType(), it.PubKeyReformed(), design.DocSvcType(), design.DocSvcEndPoint())
 	document := types.NewDocument(didDocument)
 	if err := document.IsValid(nil); err != nil {
