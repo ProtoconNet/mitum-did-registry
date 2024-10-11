@@ -11,7 +11,7 @@ import (
 func (d Document) MarshalBSON() ([]byte, error) {
 	return bsonenc.Marshal(bson.M{
 		"_hint": d.Hint().String(),
-		"did_doc": bson.M{
+		"did_document": bson.M{
 			"@context": d.didDoc.context_,
 			"id":       d.didDoc.id,
 			"created":  d.didDoc.created,
@@ -69,7 +69,7 @@ func (d Document) MarshalBSON() ([]byte, error) {
 
 type DocumentBSONUnmarshaler struct {
 	Hint   string   `bson:"_hint"`
-	DIDDoc bson.Raw `bson:"did_doc"`
+	DIDDoc bson.Raw `bson:"did_document"`
 }
 
 func (d *Document) DecodeBSON(b []byte, enc *bsonenc.Encoder) error {

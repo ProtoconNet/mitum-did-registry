@@ -9,7 +9,7 @@ import (
 
 type DocumentJSONMarshaler struct {
 	hint.BaseHinter
-	DIDDoc DIDDocumentMarshaler `json:"did_doc"`
+	DIDDoc DIDDocumentMarshaler `json:"did_document"`
 }
 
 func (d Document) MarshalJSON() ([]byte, error) {
@@ -37,7 +37,7 @@ func (d Document) MarshalJSON() ([]byte, error) {
 
 type DocumentJSONUnmarshaler struct {
 	Hint   hint.Hint            `json:"_hint"`
-	DIDDoc DIDDocumentMarshaler `json:"did_doc"`
+	DIDDoc DIDDocumentMarshaler `json:"did_document"`
 }
 
 func (d *Document) DecodeJSON(b []byte, enc encoder.Encoder) error {
