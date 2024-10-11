@@ -13,7 +13,7 @@ type MigrateDIDItemJSONMarshaler struct {
 	hint.BaseHinter
 	Contract base.Address             `json:"contract"`
 	PubKey   string                   `json:"publicKey"`
-	TxID     string                   `json:"txid"`
+	TxID     string                   `json:"tx_hash"`
 	Currency currencytypes.CurrencyID `json:"currency"`
 }
 
@@ -31,7 +31,7 @@ type MigrateDIDItemJSONUnMarshaler struct {
 	Hint     hint.Hint `json:"_hint"`
 	Contract string    `json:"contract"`
 	PubKey   string    `json:"publicKey"`
-	TxID     string    `json:"txid"`
+	TxID     string    `json:"tx_hash"`
 	Currency string    `json:"currency"`
 }
 

@@ -13,7 +13,7 @@ func (it MigrateDIDItem) MarshalBSON() ([]byte, error) {
 			"_hint":     it.Hint().String(),
 			"contract":  it.contract,
 			"publicKey": it.pubKey,
-			"txid":      it.txID,
+			"tx_hash":   it.txID,
 			"currency":  it.currency,
 		},
 	)
@@ -23,7 +23,7 @@ type MigrateDIDItemBSONUnmarshaler struct {
 	Hint     string `bson:"_hint"`
 	Contract string `bson:"contract"`
 	PubKey   string `bson:"publicKey"`
-	TxID     string `bson:"txid"`
+	TxID     string `bson:"tx_hash"`
 	Currency string `bson:"currency"`
 }
 
