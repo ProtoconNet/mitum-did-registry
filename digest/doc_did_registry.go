@@ -10,33 +10,33 @@ import (
 	"github.com/ProtoconNet/mitum2/util/encoder"
 )
 
-type DIDDesignDoc struct {
+type DIDRegistryDesignDoc struct {
 	mongodb.BaseDoc
 	st     base.State
 	design types.Design
 }
 
-// NewDIDDesignDoc get the State of DID Design
-func NewDIDDesignDoc(st base.State, enc encoder.Encoder) (DIDDesignDoc, error) {
+// NewDIDRegistryDesignDoc get the State of DID Design
+func NewDIDRegistryDesignDoc(st base.State, enc encoder.Encoder) (DIDRegistryDesignDoc, error) {
 	design, err := state.GetDesignFromState(st)
 
 	if err != nil {
-		return DIDDesignDoc{}, err
+		return DIDRegistryDesignDoc{}, err
 	}
 
 	b, err := mongodb.NewBaseDoc(nil, st, enc)
 	if err != nil {
-		return DIDDesignDoc{}, err
+		return DIDRegistryDesignDoc{}, err
 	}
 
-	return DIDDesignDoc{
+	return DIDRegistryDesignDoc{
 		BaseDoc: b,
 		st:      st,
 		design:  design,
 	}, nil
 }
 
-func (doc DIDDesignDoc) MarshalBSON() ([]byte, error) {
+func (doc DIDRegistryDesignDoc) MarshalBSON() ([]byte, error) {
 	m, err := doc.BaseDoc.M()
 	if err != nil {
 		return nil, err

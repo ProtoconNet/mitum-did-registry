@@ -6,23 +6,23 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func (bs *BlockSession) prepareDID() error {
+func (bs *BlockSession) prepareDIDRegistry() error {
 	if len(bs.sts) < 1 {
 		return nil
 	}
 
-	var didModels []mongo.WriteModel
+	var didRegistryModels []mongo.WriteModel
 	var didDataModels []mongo.WriteModel
 	var didDocumentModels []mongo.WriteModel
 	for i := range bs.sts {
 		st := bs.sts[i]
 		switch {
 		case state.IsDesignStateKey(st.Key()):
-			j, err := bs.handleDIDDesignState(st)
+			j, err := bs.handleDIDRegistryDesignState(st)
 			if err != nil {
 				return err
 			}
-			didModels = append(didModels, j...)
+			didRegistryModels = append(didRegistryModels, j...)
 		case state.IsDataStateKey(st.Key()):
 			j, err := bs.handleDIDDataState(st)
 			if err != nil {
@@ -40,15 +40,15 @@ func (bs *BlockSession) prepareDID() error {
 		}
 	}
 
-	bs.didModels = didModels
+	bs.didRegistryModels = didRegistryModels
 	bs.didDataModels = didDataModels
 	bs.didDocumentModels = didDocumentModels
 
 	return nil
 }
 
-func (bs *BlockSession) handleDIDDesignState(st mitumbase.State) ([]mongo.WriteModel, error) {
-	if DIDDesignDoc, err := NewDIDDesignDoc(st, bs.st.Encoder()); err != nil {
+func (bs *BlockSession) handleDIDRegistryDesignState(st mitumbase.State) ([]mongo.WriteModel, error) {
+	if DIDDesignDoc, err := NewDIDRegistryDesignDoc(st, bs.st.Encoder()); err != nil {
 		return nil, err
 	} else {
 		return []mongo.WriteModel{

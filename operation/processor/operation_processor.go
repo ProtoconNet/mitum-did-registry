@@ -161,7 +161,7 @@ func CheckDuplication(opr *currencyprocessor.OperationProcessor, op mitumbase.Op
 	if len(duplicationTypeDIDPubKey) > 0 {
 		if _, found := opr.Duplicated[duplicationTypeDIDPubKey]; found {
 			return errors.Errorf(
-				"cannot use a duplicated contract-did for DID, %v within a proposal",
+				"cannot use a duplicated contract-did public key for DID, %v within a proposal",
 				duplicationTypeDIDPubKey,
 			)
 		}

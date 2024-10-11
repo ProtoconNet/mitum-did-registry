@@ -37,7 +37,7 @@ type BlockSession struct {
 	balanceModels         []mongo.WriteModel
 	currencyModels        []mongo.WriteModel
 	contractAccountModels []mongo.WriteModel
-	didModels             []mongo.WriteModel
+	didRegistryModels     []mongo.WriteModel
 	didDataModels         []mongo.WriteModel
 	didDocumentModels     []mongo.WriteModel
 	statesValue           *sync.Map
@@ -90,7 +90,7 @@ func (bs *BlockSession) Prepare() error {
 	if err := bs.prepareCurrencies(); err != nil {
 		return err
 	}
-	if err := bs.prepareDID(); err != nil {
+	if err := bs.prepareDIDRegistry(); err != nil {
 		return err
 	}
 
@@ -143,8 +143,8 @@ func (bs *BlockSession) Commit(_ context.Context) error {
 			}
 		}
 
-		if len(bs.didModels) > 0 {
-			if err := bs.writeModels(txnCtx, defaultColNameDID, bs.didModels); err != nil {
+		if len(bs.didRegistryModels) > 0 {
+			if err := bs.writeModels(txnCtx, defaultColNameDIDRegistry, bs.didRegistryModels); err != nil {
 				return nil, err
 			}
 		}
@@ -390,7 +390,7 @@ func (bs *BlockSession) close() error {
 	bs.currencyModels = nil
 	bs.accountModels = nil
 	bs.balanceModels = nil
-	bs.didModels = nil
+	bs.didRegistryModels = nil
 	bs.didDataModels = nil
 	bs.didDocumentModels = nil
 	bs.contractAccountModels = nil

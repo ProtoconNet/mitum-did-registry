@@ -20,7 +20,7 @@ var (
 	defaultColNameBalance         = "digest_bl"
 	defaultColNameCurrency        = "digest_cr"
 	defaultColNameOperation       = "digest_op"
-	defaultColNameDID             = "digest_did_service"
+	defaultColNameDIDRegistry     = "digest_did_registry"
 	defaultColNameDIDData         = "digest_did_data"
 	defaultColNameDIDDocument     = "digest_did_document"
 	defaultColNameBlock           = "digest_bm"
@@ -35,7 +35,7 @@ func DIDDesign(st *cdigest.Database, contract string) (types.Design, base.State,
 	)
 	var sta base.State
 	if err := st.MongoClient().GetByFilter(
-		defaultColNameDID,
+		defaultColNameDIDRegistry,
 		q,
 		func(res *mongo.SingleResult) error {
 			i, err := cdigest.LoadState(res.Decode, st.Encoders())
