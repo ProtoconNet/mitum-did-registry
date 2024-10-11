@@ -23,9 +23,9 @@ import (
 )
 
 var (
-	HandlerPathDIDDesign   = `/did-service/{contract:(?i)` + types.REStringAddressString + `}`
-	HandlerPathDIDData     = `/did-service/{contract:(?i)` + types.REStringAddressString + `}/did/{pubKey:` + types.ReSpecialCh + `}`
-	HandlerPathDIDDocument = `/did-service/{contract:(?i)` + types.REStringAddressString + `}/document`
+	HandlerPathDIDDesign   = `/did-registry/{contract:(?i)` + types.REStringAddressString + `}`
+	HandlerPathDIDData     = `/did-registry/{contract:(?i)` + types.REStringAddressString + `}/did/{pubKey:` + types.ReSpecialCh + `}`
+	HandlerPathDIDDocument = `/did-registry/{contract:(?i)` + types.REStringAddressString + `}/document`
 )
 
 func init() {
