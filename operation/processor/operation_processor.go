@@ -16,7 +16,7 @@ const (
 	DuplicationTypeCurrency  currencytypes.DuplicationType = "currency"
 	DuplicationTypeContract  currencytypes.DuplicationType = "contract"
 	DuplicationTypeDID       currencytypes.DuplicationType = "did"
-	DuplicationTypeDIDPubKey currencytypes.DuplicationType = "did-pubkey"
+	DuplicationTypeDIDPubKey currencytypes.DuplicationType = "didpubkey"
 )
 
 func CheckDuplication(opr *currencyprocessor.OperationProcessor, op mitumbase.Operation) error {
@@ -26,7 +26,7 @@ func CheckDuplication(opr *currencyprocessor.OperationProcessor, op mitumbase.Op
 	var duplicationTypeSenderID string
 	var duplicationTypeCurrencyID string
 	var duplicationTypeDID string
-	var duplicationTypeDIDPubKey string
+	var duplicationTypeDIDPubKey []string
 	var duplicationTypeContractID string
 	var newAddresses []mitumbase.Address
 
@@ -97,8 +97,8 @@ func CheckDuplication(opr *currencyprocessor.OperationProcessor, op mitumbase.Op
 		if !ok {
 			return errors.Errorf("expected %T, not %T", did.CreateDIDFact{}, t.Fact())
 		}
-		duplicationTypeDIDPubKey = currencyprocessor.DuplicationKey(
-			fmt.Sprintf("%s:%s", fact.Contract().String(), fact.PubKey()), DuplicationTypeDIDPubKey)
+		duplicationTypeDIDPubKey = []string{currencyprocessor.DuplicationKey(
+			fmt.Sprintf("%s:%s", fact.Contract().String(), fact.PubKey()), DuplicationTypeDIDPubKey)}
 		duplicationTypeSenderID = currencyprocessor.DuplicationKey(fact.Sender().String(), DuplicationTypeSender)
 	case did.DeactivateDID:
 		fact, ok := t.Fact().(did.DeactivateDIDFact)
@@ -116,6 +116,18 @@ func CheckDuplication(opr *currencyprocessor.OperationProcessor, op mitumbase.Op
 		duplicationTypeDID = currencyprocessor.DuplicationKey(
 			fmt.Sprintf("%s:%s", fact.Contract().String(), fact.DID()), DuplicationTypeDID)
 		duplicationTypeSenderID = currencyprocessor.DuplicationKey(fact.Sender().String(), DuplicationTypeSender)
+	case did.MigrateDID:
+		fact, ok := t.Fact().(did.MigrateDIDFact)
+		if !ok {
+			return errors.Errorf("expected %T, not %T", did.MigrateDIDFact{}, t.Fact())
+		}
+		duplicationTypeSenderID = currencyprocessor.DuplicationKey(fact.Sender().String(), DuplicationTypeSender)
+		var dids []string
+		for _, v := range fact.Items() {
+			key := currencyprocessor.DuplicationKey(fmt.Sprintf("%s:%s", v.Contract().String(), v.PubKey()), DuplicationTypeDIDPubKey)
+			dids = append(dids, key)
+		}
+		duplicationTypeDIDPubKey = dids
 	default:
 		return nil
 	}
@@ -159,14 +171,15 @@ func CheckDuplication(opr *currencyprocessor.OperationProcessor, op mitumbase.Op
 		opr.Duplicated[duplicationTypeDID] = struct{}{}
 	}
 	if len(duplicationTypeDIDPubKey) > 0 {
-		if _, found := opr.Duplicated[duplicationTypeDIDPubKey]; found {
-			return errors.Errorf(
-				"cannot use a duplicated contract-did public key for DID, %v within a proposal",
-				duplicationTypeDIDPubKey,
-			)
+		for _, v := range duplicationTypeDIDPubKey {
+			if _, found := opr.Duplicated[v]; found {
+				return errors.Errorf(
+					"cannot use a duplicated contract-publickey for DID, %v within a proposal",
+					v,
+				)
+			}
+			opr.Duplicated[v] = struct{}{}
 		}
-
-		opr.Duplicated[duplicationTypeDIDPubKey] = struct{}{}
 	}
 
 	if len(newAddresses) > 0 {
@@ -196,7 +209,10 @@ func GetNewProcessor(opr *currencyprocessor.OperationProcessor, op mitumbase.Ope
 		currency.UpdateCurrency,
 		currency.Mint,
 		did.RegisterModel,
-		did.CreateDID:
+		did.CreateDID,
+		did.DeactivateDID,
+		did.ReactivateDID,
+		did.MigrateDID:
 		return nil, false, errors.Errorf("%T needs SetProcessor", t)
 	default:
 		return nil, false, nil
