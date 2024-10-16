@@ -81,7 +81,7 @@ func (ipp *MigrateDIDItemProcessor) PreProcess(
 		return e.Wrap(
 			common.ErrStateE.Errorf(
 				"pubKey %v in contract account %v",
-				it.PubKeyReformed(), it.Contract()),
+				it.PubKeyDetatched(), it.Contract()),
 		)
 	}
 
