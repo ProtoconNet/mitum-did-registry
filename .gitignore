@@ -27,6 +27,7 @@ tests/*/*/coverage/
 /.vscode
 /mitum-data
 /yml
+/sh
 .envrc
 .golangci.excludes.txt
 /config.yml

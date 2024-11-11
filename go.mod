@@ -5,14 +5,15 @@ go 1.22
 toolchain go1.22.1
 
 require (
-	github.com/ProtoconNet/mitum-currency/v3 v3.0.0-alpha.0.20240902003652-0d5fd2acf44e
-	github.com/ProtoconNet/mitum2 v0.0.0-20240805062025-57b0a3c5b436
+	github.com/ProtoconNet/mitum-currency/v3 v3.0.0-alpha.0.20241101032517-b63f777108fd
+	github.com/ProtoconNet/mitum2 v0.0.0-20241101032300-fbbe79d8122c
 	github.com/alecthomas/kong v0.9.0
 	github.com/arl/statsviz v0.6.0
 	github.com/gorilla/mux v1.8.1
 	github.com/pkg/errors v0.9.1
 	github.com/rs/zerolog v1.32.0
 	go.mongodb.org/mongo-driver v1.15.0
+	golang.org/x/crypto v0.23.0
 	golang.org/x/sync v0.7.0
 )
 
@@ -93,7 +94,6 @@ require (
 	github.com/zeebo/blake3 v0.2.3 // indirect
 	go.uber.org/mock v0.4.0 // indirect
 	golang.org/x/arch v0.7.0 // indirect
-	golang.org/x/crypto v0.23.0 // indirect
 	golang.org/x/exp v0.0.0-20240506185415-9bf2ced13842 // indirect
 	golang.org/x/mod v0.17.0 // indirect
 	golang.org/x/net v0.25.0 // indirect
